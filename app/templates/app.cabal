@@ -1,6 +1,6 @@
 name:           app
 version:        0.1
-cabal-version:  >=1.18
+cabal-version:  >=1.2
 build-type:     Simple
 author:         me
 
