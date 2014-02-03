@@ -27,18 +27,7 @@ angular.module('<%= baseName %>')
       $scope.delete = function (id) {
         <%= _.capitalize(name) %>.delete({id: id},
           function () {
-            $scope.<%= pluralize(name) %> = <%= _.capitalize(name) %>.query(function (objs) {
-              // deal with Haskell Persistent json format
-              for (var i = 0; i < objs.length; i++) {
-                var obj = objs[i];
-                obj.id = obj.key;
-                delete obj.key;
-                for (var prop in obj.value) {
-                  obj[prop] = obj.value[prop];
-                }
-                delete obj.value;
-              }
-            });
+            $scope.<%= pluralize(name) %> = <%= _.capitalize(name) %>.query(transformObjs);
           });
       };
 
@@ -52,35 +41,13 @@ angular.module('<%= baseName %>')
           //<%= _.capitalize(name) %>.update({id: id}, $scope.<%= name %>,
           <%= _.capitalize(name) %>.update({id: id}, obj,
             function () {
-              $scope.<%= pluralize(name) %> = <%= _.capitalize(name) %>.query(function (objs) {
-                // deal with Haskell Persistent json format
-                for (var i = 0; i < objs.length; i++) {
-                  var obj = objs[i];
-                  obj.id = obj.key;
-                  delete obj.key;
-                  for (var prop in obj.value) {
-                    obj[prop] = obj.value[prop];
-                  }
-                  delete obj.value;
-                }
-              });
+              $scope.<%= pluralize(name) %> = <%= _.capitalize(name) %>.query(transformObjs);
               $scope.clear();
             });
         } else {
           <%= _.capitalize(name) %>.save($scope.<%= name %>,
             function () {
-              $scope.<%= pluralize(name) %> = <%= _.capitalize(name) %>.query(function (objs) {
-                // deal with Haskell Persistent json format
-                for (var i = 0; i < objs.length; i++) {
-                  var obj = objs[i];
-                  obj.id = obj.key;
-                  delete obj.key;
-                  for (var prop in obj.value) {
-                    obj[prop] = obj.value[prop];
-                  }
-                  delete obj.value;
-                }
-              });
+              $scope.<%= pluralize(name) %> = <%= _.capitalize(name) %>.query(transformObjs);
               $scope.clear();
             });
         }
@@ -111,6 +78,21 @@ angular.module('<%= baseName %>')
           $scope.save(id);
         });
       };
+
+      var transformObjs = function (objs) {
+        // deal with Haskell Persistent json format
+        for (var i = 0; i < objs.length; i++) {
+          var obj = objs[i];
+          obj.id = obj.key;
+          delete obj.key;
+          for (var prop in obj.value) {
+            obj[prop] = obj.value[prop];
+          }
+          delete obj.value;
+          console.log(obj);
+        }
+      };
+
     }]);
 
 var <%= _.capitalize(name) %>SaveController =
