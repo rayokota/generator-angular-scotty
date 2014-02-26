@@ -1,6 +1,6 @@
 {
   "name": "generator-angular-scotty",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A Yeoman generator for AngularJS + Scotty",
   "keywords": [
     "yeoman-generator",
@@ -8,7 +8,7 @@
     "Scotty",
     "Persistent",
     "AngularJS",
-    "Twitter Bootstrap"
+    "Bootstrap"
   ],
   "homepage": "https://github.com/rayokota/generator-angular-scotty",
   "bugs": "https://github.com/rayokota/generator-angular-scotty/issues",
