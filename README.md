@@ -6,7 +6,7 @@ Scotty is a Haskell-based micro-framework.  For AngularJS integration with other
 
 ## Installation
 
-Install [Git](http://git-scm.com), [node.js](http://nodejs.org), [Haskell](http://www.haskell.org/haskellwiki/Haskell), and [Cabal 1.18](http://www.haskell.org/cabal/download.html).  The development mode also requires [SQLite](http://www.sqlite.org).
+Install [Git](http://git-scm.com), [node.js](http://nodejs.org), [Haskell](http://www.haskell.org/haskellwiki/Haskell), [GHC 7.6.3](https://www.haskell.org/ghc/), and [Cabal 1.18](http://www.haskell.org/cabal/download.html).  The development mode also requires [SQLite](http://www.sqlite.org).
 
 Install Yeoman:
 

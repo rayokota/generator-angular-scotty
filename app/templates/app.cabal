@@ -1,16 +1,16 @@
 name:           app
 version:        0.1
-cabal-version:  >=1.2
+cabal-version:  >=1.10
 build-type:     Simple
 author:         me
 
 executable app
   build-depends:   
                    base >= 4,
-                   scotty,
+                   scotty >= 0.6,
                    transformers,
                    blaze-html,
-                   aeson,
+                   aeson < 0.7,
                    persistent,
                    persistent-sqlite,
                    persistent-template,
