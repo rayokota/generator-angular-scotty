@@ -1,6 +1,6 @@
 {
   "name": "generator-angular-scotty",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A Yeoman generator for AngularJS + Scotty",
   "keywords": [
     "yeoman-generator",
