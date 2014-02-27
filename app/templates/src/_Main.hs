@@ -71,6 +71,7 @@ main = do
           liftIO $ flip Db.runSqlPersistMPool pool $ Db.get $ key
         case <%= entity.name %> of
           Just _  -> do liftIO $ flip Db.runSqlPersistMPool pool $ Db.delete $ key
+                        status noContent204
           Nothing -> status notFound404
       <% }); %>
 
