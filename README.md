@@ -16,6 +16,8 @@ Install the Angular-Scotty generator:
 
     npm install -g generator-angular-scotty
 
+The above prerequisites can be installed to a VM using the [Angular-Scotty provisioner](https://github.com/rayokota/provision-angular-scotty).
+
 ## Creating a Scotty service
 
 In a new directory, generate the service:
