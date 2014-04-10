@@ -39,9 +39,7 @@ EntityGenerator.prototype.askFor = function askFor() {
     type: 'list',
     name: 'attrType',
     message: 'What is the type of the attribute?',
-    //choices: ['String', 'Integer', 'Float', 'Boolean', 'Date', 'Enum'],
-    // TODO: need to handle Date -> UTCTime JSON conversion
-    choices: ['String', 'Integer', 'Float', 'Boolean', 'Enum'],
+    choices: ['String', 'Integer', 'Float', 'Boolean', 'Date', 'Enum'],
     default: 'String'
   },
   {
@@ -137,7 +135,9 @@ EntityGenerator.prototype.askFor = function askFor() {
     } else if (attrType === 'Boolean') {
       attrImplType = 'Bool';
     } else if (attrType === 'Date') {
-      attrImplType = 'UTCTime';
+      // TODO: need to handle Date -> UTCTime JSON conversion
+      //attrImplType = 'UTCTime';
+      attrImplType = 'String';
     } else if (attrType === 'Enum') {
       attrImplType = 'String';
     }
