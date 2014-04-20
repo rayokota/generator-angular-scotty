@@ -12,7 +12,7 @@ executable app
                    blaze-html,
                    aeson < 0.7,
                    persistent,
-                   persistent-sqlite,
+                   persistent-postgresql,
                    persistent-template,
                    http-types,
                    text,
