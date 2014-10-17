@@ -65,7 +65,7 @@ angular.module('<%= baseName %>')
       $scope.open = function (id) {
         var <%= name %>Save = $modal.open({
           templateUrl: '<%= name %>-save.html',
-          controller: <%= _.capitalize(name) %>SaveController,
+          controller: '<%= _.capitalize(name) %>SaveController',
           resolve: {
             <%= name %>: function () {
               return $scope.<%= name %>;
@@ -92,25 +92,23 @@ angular.module('<%= baseName %>')
           console.log(obj);
         }
       };
+    }])
+  .controller('<%= _.capitalize(name) %>SaveController', ['$scope', '$modalInstance', '<%= name %>',
+    function ($scope, $modalInstance, <%= name %>) {
+      $scope.<%= name %> = <%= name %>;
 
+      <% _.each(attrs, function (attr) { if (attr.attrType === 'Date') { %>
+      $scope.<%= attr.attrName %>DateOptions = {
+        dateFormat: 'yy-mm-dd',
+        <% if (attr.dateConstraint === 'Past') { %>maxDate: -1<% } %>
+        <% if (attr.dateConstraint === 'Future') { %>minDate: 1<% } %>
+      };<% }}); %>
+
+      $scope.ok = function () {
+        $modalInstance.close($scope.<%= name %>);
+      };
+
+      $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+      };
     }]);
-
-var <%= _.capitalize(name) %>SaveController =
-  function ($scope, $modalInstance, <%= name %>) {
-    $scope.<%= name %> = <%= name %>;
-
-    <% _.each(attrs, function (attr) { if (attr.attrType === 'Date') { %>
-    $scope.<%= attr.attrName %>DateOptions = {
-      dateFormat: 'yy-mm-dd',
-      <% if (attr.dateConstraint === 'Past') { %>maxDate: -1<% } %>
-      <% if (attr.dateConstraint === 'Future') { %>minDate: 1<% } %>
-    };<% }}); %>
-
-    $scope.ok = function () {
-      $modalInstance.close($scope.<%= name %>);
-    };
-
-    $scope.cancel = function () {
-      $modalInstance.dismiss('cancel');
-    };
-  };
